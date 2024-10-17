@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="header">
+    <h1 class="title">Kr4ken ChatBot</h1>
+  </div>
+
+  <div class="messagesContent">
+    <div class="loading" *ngIf="isLoading">Cargando mensajes anteriores...</div>
+
+    <div [ngClass]="isBotMessage(message.id) ? 'adjustBot' : 'adjustUser'" *ngFor="let message of messages">
+      <div [ngClass]="isBotMessage(message.id) ? 'messageBot' : 'messageUser'">
+        <p class="textMessages">{{ message.message }}</p>
+      </div>
+    </div>
+    
+    <div #messagesEnd></div>
+  </div>
+
+  <div class="examplesContent">
+    <span class="infoExamples">Try Examples:</span>
+    <button class="exampleBtn" (click)="getSelectedText()">Paint Selected Text</button>
+    <button class="exampleBtn" (click)="writeCode()">Write Example code</button>
+    <button class="exampleBtn" [disabled]="true">Other Button 1</button>
+    <button class="exampleBtn" [disabled]="true">Other Button 2</button>
+    <button class="exampleBtn" [disabled]="true">Other Button 3</button>
+  </div>
+
+  <div class="inputContent">
+    <textarea 
+      class="textArea" 
+      rows="3" 
+      placeholder="Type your message"
+      [(ngModel)]="message"
+      (keydown)="onKeydown($event)"
+    ></textarea>
+    <button class="sendMessage" [disabled]="message === ''" (click)="sendMessage()">
+      <span class="icon is-small">
+        <i class="fa-solid fa-paper-plane"></i>
+      </span>
+    </button>
+  </div>
+</div>

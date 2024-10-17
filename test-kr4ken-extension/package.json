@@ -1,0 +1,91 @@
+{
+  "name": "test-kr4ken-extension",
+  "displayName": "test-kr4ken-extension",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "chatbot",
+          "title": "Chatbot",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "chatbot": [
+        {
+          "type": "webview",
+          "id": "chatbot-sidebar",
+          "name": ""
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "test-kr4ken-extension.exportChat",
+        "title": "Export Chat",
+        "category": "test-kr4ken-extension",
+        "icon": "$(save-as)"
+      },
+      {
+        "command": "test-kr4ken-extension.cleanChat",
+        "title": "Clean Chat",
+        "category": "test-kr4ken-extension",
+        "icon": "$(notebook-delete-cell)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "test-kr4ken-extension.exportChat",
+          "group": "navigation",
+          "when": "view == chatbot-sidebar"
+        },
+        {
+          "command": "test-kr4ken-extension.cleanChat",
+          "group": "navigation",
+          "when": "view == chatbot-sidebar"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "test-kr4ken-extension.exportChat",
+          "when": "view == chatbot-sidebar"
+        },
+        {
+          "command": "test-kr4ken-extension.cleanChat",
+          "when": "view == chatbot-sidebar"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.94.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.9.1",
+    "typescript": "^5.5.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}

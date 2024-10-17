@@ -1,0 +1,170 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--vscode-editor-font-family);
+  height: 98vh;
+  color: var(--vscode-editor-foreground);
+  background: transparent;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--vscode-editorWidget-border);
+
+    .title {
+      font-size: var(--vscode-font-size);
+      padding: 5px 0;
+    }
+  }
+
+  .messagesContent {
+    overflow: auto;
+    padding: 10px;
+    margin-top: 10px;
+    flex: 1 1 100%;
+
+    .adjustBot, .adjustUser{
+      display: flex;
+
+      .messageBot, .messageUser {
+        margin: 5px 0;
+        border: 1px solid var(--vscode-editorWidget-border);
+        border-radius: 5px;
+        padding: 10px 5px;
+        max-width: 60%;
+
+        .textMessages {
+          font-size: var(--vscode-font-size);
+          white-space: pre-wrap;
+          word-break: break-word;
+        }
+      }
+
+      .messageBot {
+        background-color: var(--vscode-dropdown-background);
+      }
+
+      .messageUser {
+        background-color: var(--vscode-button-background);
+        color: var(--vscode-button-foreground);
+        border: 1px solid var(--vscode-button-background, var(--vscode-editorWidget-border));
+      }
+    }
+
+    .adjustBot {
+      justify-content: flex-start;
+    }
+
+    .adjustUser {
+      justify-content: flex-end;
+    }
+  }
+  
+  .examplesContent {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+
+    .infoExamples {
+      font-size: 10px;
+      font-style: italic;
+      margin: 5px;
+    }
+
+    .exampleBtn {
+      padding: 5px;
+      background-color: transparent;
+      border: 1px solid var(--vscode-editorWidget-border);
+      color: var(--vscode-textLink-foreground);
+      margin: 0 5px 5px 5px;
+      max-width: 180px;
+      min-width: 120px;
+      font-size: 10px;
+    }
+
+    .exampleBtn:hover {
+      background-color: var(--vscode-editorWidget-border);
+      cursor: pointer;
+    }
+
+    .exampleBtn:disabled {
+      border: none;
+      cursor: default;
+      background-color: transparent;
+      color: var(--vscode-disabledForeground);
+    }
+  }
+
+  .inputContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border-top: 1px solid var(--vscode-editorWidget-border);
+    flex: 1 1 10%;
+
+    .textArea {
+      font-family: var(--vscode-font-family);
+      padding: 5px;
+      margin-top: 10px;
+      flex: 1 1 100%;
+      resize: none;
+      background-color: var(--vscode-input-background);
+      border: none;
+      color: var(--vscode-input-foreground);
+      border-radius: 5px;
+    }
+
+    .sendMessage {
+      padding: 5px;
+      background-color: transparent;
+      color: var(--vscode-textLink-foreground);
+      border: none;
+      margin-left: 5px;
+      border-radius: 5px;
+    }
+
+    .sendMessage:hover {
+      cursor: pointer;
+      background-color: #112435;
+    }
+
+    .sendMessage:disabled {
+      color: var(--vscode-disabledForeground);
+      cursor: default;
+      background-color: transparent;
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .messageBot, .messageUser {
+      min-width: 100%;
+    } 
+  }
+  
+  @media only screen and (min-width: 351px) {
+    .messageBot, .messageUser {
+      min-width: 30%;
+    } 
+  }
+  
+  @media only screen and (max-width: 335px) {
+    .examplesContent {
+      flex-direction: column;
+    } 
+  
+    .exampleBtn {
+      min-width: 95% !important;
+    }
+  }
+
+  @media only screen and (max-width: 359px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
